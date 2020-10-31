@@ -14,7 +14,7 @@ import {
 import SearchSection from "./components/SearchSection";
 
 export default function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   function onChangeSearchValue(event) {
@@ -38,11 +38,10 @@ export default function App() {
     fetch(`http://localhost:5000/getMovies/${searchValue}`)
       .then((response) => response.json())
       .then((result) => setData(result))
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error", error))
   }
 
-  function onClick4Booking(imdbId) {}
-
+  function onClick4Booking(imdbId) { }
   return (
     <Container style={{ marginTop: "60px" }}>
       <SearchSection
@@ -51,7 +50,6 @@ export default function App() {
         onClickSearch={onClickSearch}
       />
       <br />
-
       <section className="movies-section">
         <Row>
           {data && data.length &&
@@ -74,7 +72,6 @@ export default function App() {
                       <CardBody className=" text-dark bg-light">
                         <CardTitle>Movie Name: {movie.title}</CardTitle>
                         <CardText>Released Year: {movie.year}</CardText>
-
                         <Link
                           to={`/booking-page/${movie.imdbId}`}
                           className="btn btn-primary"
