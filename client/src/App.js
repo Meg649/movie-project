@@ -34,13 +34,14 @@ export default function App() {
   }
 
   function fetchMovies() {
-    fetch(`http://localhost:5000`)
+    console.log("fetch the item");
+    fetch(`http://localhost:5000/getMovies/${searchValue}`)
       .then((response) => response.json())
       .then((result) => setData(result))
       .catch((error) => console.log("error", error));
   }
 
-  function onClick4Booking(imdbID) {}
+  function onClick4Booking(imdbId) {}
 
   return (
     <Container style={{ marginTop: "60px" }}>
@@ -56,12 +57,12 @@ export default function App() {
           {data && data.length &&
             data.map((movie) => {
               return (
-                <Col md={3} key={movie.imdbID}>
+                <Col md={3} key={movie.imdbId}>
                   <Card>
                     <CardImg
                       top
                       width="100%"
-                      src={movie.Poster}
+                      src={movie.poster}
                       alt="Card image cap"
                     />
                     <Card className="card border-primary mb-4">
@@ -71,14 +72,14 @@ export default function App() {
                         </h5>
                       </div>
                       <CardBody className=" text-dark bg-light">
-                        <CardTitle>Movie Name: {movie.Title}</CardTitle>
-                        <CardText>Released Year: {movie.Year}</CardText>
+                        <CardTitle>Movie Name: {movie.title}</CardTitle>
+                        <CardText>Released Year: {movie.year}</CardText>
 
                         <Link
-                          to={`/booking-page/${movie.imdbID}`}
+                          to={`/booking-page/${movie.imdbId}`}
                           className="btn btn-primary"
                         >
-                          Book Now
+                          Book Now!!!!
                         </Link>
                       </CardBody>
                     </Card>

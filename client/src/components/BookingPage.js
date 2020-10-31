@@ -14,7 +14,7 @@ export default function BookingPage() {
 
   function getMovieDetail() {
     setLoading(true);
-    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=33c89a65`)
+    fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=1c28ccf8`)
       .then((response) => response.json())
       .then((result) => {
         setLoading(false);
