@@ -11,7 +11,9 @@ import {
   Col,
   Button
 } from "reactstrap";
+
 import SearchSection from "./components/SearchSection";
+import DeleteMovies from "./components/DeleteMovies";
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -77,6 +79,18 @@ export default function App() {
                           className="btn btn-primary"
                         >
                           Book Now!!!!
+                        </Link>
+                        <Link
+                          to={`/update-movie/${movie.title}`}
+                          className="btn btn-success"
+                        >
+                          Update Movie
+                        </Link>
+                        <Link
+                          to={`/delete-movie/${movie.title}`}
+                          className="btn btn-danger"
+                        >
+                          Delete Movie
                         </Link>
                       </CardBody>
                     </Card>

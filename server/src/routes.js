@@ -11,9 +11,9 @@ module.exports = function () {
     });
 
     router.post('/addMovie', async (req, res) => {
-        const { title, year, poster, imdbId } = req.body;
+        const { movietitle, year, poster, imdbId } = req.body;
         const movie = new Movie({
-            title,
+            movietitle,
             year,
             poster,
             imdbId
@@ -21,6 +21,27 @@ module.exports = function () {
         await movie.save();
         res.json({ message: "Movie added successfully" });
     });
+    router.put('/updateMovie', async (req, res) => {
+        console.log(req.body)
+        const { movietitle, type, year, poster, imdbId } = req.body;
+        const movie = new Movie({
+            movietitle,
+            type,
+            year,
+            poster,
+            imdbId
+        });
+        await movie.save();
+        res.json({ message: "Movie updated successfully" });
+    });
+    router.delete('/deleteMovies/:movieTitle', async (req, res) => {
+        console.log("hello");
+        const { movieTitle } = req.params;
+        await Movie.deleteOne({title:movieTitle},function(err){
+        if(err) return handleError(err);
+        });
+        return res.json({ message: "Movie deleted successfully" });
+        });
 
     return router;
 }
