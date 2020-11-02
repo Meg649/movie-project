@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import { InputGroup, Input, Button } from "reactstrap";
 
 export default function SearchSection(props) {
@@ -18,6 +19,9 @@ export default function SearchSection(props) {
         <Button color="success" onClick={onClickSearch}>
           Search
         </Button>
+        <Link to={`/add-movie`} className="btn bg-info">
+          Add Movie
+        </Link>
       </InputGroup>
     </section>
   );
